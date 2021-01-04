@@ -13,7 +13,6 @@ public class ATUTest {
 
     @Test
     public void EqualsATU_IsCompareCorrect_True() {
-        //GIVEN
         ArrayList<District> district1 = new ArrayList<>();
         district1.add(new District(TypeOfATU.DISTRICT,"Central",12.4,532,
                 "Maks", "Kakazey","manager"));
@@ -39,11 +38,9 @@ public class ATUTest {
 
         Region region1 = new Region(TypeOfATU.REGION,"Dnipropetrovska", 22.3,10000,
                 "Borys","Filatov","governor", city1,city1.get(0),village1);
-        //region1.display();
         Region region2 = new Region(TypeOfATU.REGION,"Dnipropetrovska", 22.3,10000,
                 "Maks","Kakazey","Mer", city1,city1.get(0),village1);
 
-        //WHEN
         Assert.assertEquals(region,region1);
 
         System.out.println("test1.1");
@@ -51,7 +48,6 @@ public class ATUTest {
         region1.setManager("Maks", "Kakazey", "Mer");
         region1.setManager("Maks", "Kakazey", "Mer");
         Assert.assertEquals(region1,region2);
-        //test 2
     }
 
     @Rule
@@ -60,19 +56,16 @@ public class ATUTest {
     @Test
     public void Input_WrongEnum_ExceptionThrown(){
 
-        //GIVEN
         expectedEx.expect(WrongInputException.class);
         expectedEx.expectMessage("No enum found with url: [DISTRICT]");
         District d1 = new District();
         String s = "DISTRICT/Central/12.4/532/Maks/Kakazey/manager";
         System.out.println("test1.2");
-        //WHEN
         d1.input(s);
     }
     @Test
     public void ChangeManager1_IsChangeCorrect_True(){
 
-        //GIVEN
         District district1 = new District();
         district1.setManager("Maks", "Kurnevoi", "manager");
         District.Manager manager1 = district1.new Manager("Maks", "Kakazey", "head");
@@ -80,10 +73,8 @@ public class ATUTest {
         Date data1 = new Date();
         Voting voting1 = new Voting("Local elections",data1);
 
-        //WHEN
         voting1.changeManager(district1, "Maks", "Kakazey", "head");
         System.out.println("test1.3");
-        //THEN
         Assert.assertEquals(district1.getManager(),manager1);
     }
 }
